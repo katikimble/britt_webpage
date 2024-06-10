@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='styles/admin.css') }}">
+<div class="about-container">
+    <h3 class="centered-underline">{{ title }}</h3>
+    <br>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.content(class="form-control") }}
+        </div>
+        <div class="form-group button-container">
+            {{ form.submit(class="btn btn-primary btn-block") }}
+             <button onclick="goBack()" class="btn btn-secondary btn-block">Back</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,68 @@
+.background-container {
+    position: relative;
+    padding: 0.5rem;
+    margin: 1rem auto;
+    max-width: 405px;
+    background-image: url('/about/static/pictures/back_pic1.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.trans-box {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    max-width: 385px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Courier New"
+    box-sizing: border-box;
+}
+
+.form-space {
+    margin-bottom: 15px;
+    font-family: "Courier New"
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  font-family: "Courier New"
+}
+
+.btn-sub {
+    background-color: #000000;
+    border-color: #000000;
+    color: #fff;
+    margin: 5px 0 0;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-decoration: none;
+    font-family: "Courier New"
+}
+
+.btn-sub:hover {
+    background-color: #444;
+}
+
+.alert {
+    position: relative;
+    margin-top: 20px;
+    max-width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+

@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='styles/admin.css') }}">
+<form action="{{ url_for('admin.logout') }}" method="POST" style="display:inline;" class="logout-button">
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+
+<div class="about-container">
+    <h3 class="centered-underline">Subscribers</h3> <br>
+    <p>You have {{ num_subscribers }} {{ 'subscriber' if num_subscribers == 1 else 'subscribers' }}!</p>
+    <div class="scroll-box">
+            {% for subscriber in subscribers %}
+                {{ subscriber.email }} <br>
+            {% endfor %}
+    </div>
+</div>
+
+<br>
+
+<div class="about-container">
+    <div class="chart-container">
+        <!-- About Me Section -->
+        <h3 class="centered-underline">Bio Section</h3><br>
+        <div>
+            {% if about_me %}
+                <p>{{ about_me.content|safe }}</p>
+                <div class="button-container">
+                    <a href="{{ url_for('admin.edit_about_me', about_me_id=about_me.id) }}" class="btn btn-primary">Edit</a>
+                </div>
+            <br>
+            {% else %}
+                <p>No content available.</p>
+                <div class="button-container">
+                    <a href="{{ url_for('admin.create_about_me') }}" class="btn btn-primary">Add About Me</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="about-container">
+    <!-- Poems Section -->
+    <div class="poems-section">
+        <h3 class="centered-underline">Poems Section</h3><br>
+        <div class="button-container">
+            <a href="{{ url_for('admin.new_poem') }}" class="btn btn-primary">Add New Poem</a>
+        </div>
+        <br>
+        {% for poem in poems %}
+            <div style="background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else '' }}'); padding: 20px; border: 1px solid #ccc; word-wrap: break-word; word-break: break-word; white-space: normal;">
+                <h2>{{ poem.title }}</h2>
+                <p>{{ poem.content|safe }}</p>
+            </div>
+            <div class="button-container">
+                <a href="{{ url_for('admin.update_poem', poem_id=poem.id) }}" class="btn btn-primary">Edit</a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-poem-id="{{ poem.id }}">Delete</button>
+            </div><br>
+        {% endfor %}
+    </div>
+</div>
+
+<br>
+
+<div class="about-container">
+    <!-- Art Section -->
+    <div class="art-section">
+        <h3 class="centered-underline">Art Section</h3><br>
+        <div class="button-container">
+            <a href="{{ url_for('admin.upload_art') }}" class="btn btn-primary">Upload New Art</a>
+        </div>
+        <br>
+        <div class="row">
+            {% for art in arts %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <a href="{{ url_for('art.art_detail', art_id=art.id) }}">
+                            <img class="card-img-top fixed-size-img" src="{{ url_for('static', filename='uploads/' ~ art.art_upload) }}" alt="{{ art.title }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ art.title }}</h5>
+                            <p class="card-text">{{ art.date_posted.strftime('%Y-%m-%d') }}</p>
+                            <div class="button-container">
+                                <a href="{{ url_for('admin.edit_art', art_id=art.id) }}" class="btn btn-primary">Edit</a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-art-id="{{ art.id }}">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="POST" action="">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var itemId = button.data('poem-id') || button.data('art-id');
+        var actionUrl = "{{ url_for('admin.delete_poem', poem_id=0) }}".replace('0', itemId);
+        if (!button.data('poem-id')) {
+            actionUrl = "{{ url_for('admin.delete_art', art_id=0) }}".replace('0', itemId);
+        }
+        $('#deleteForm').attr('action', actionUrl);
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,57 @@
+
+
+h1 {
+    text-align: center;
+}
+
+
+
+body {
+  margin: 1;
+  padding: 1;
+}
+
+p{
+font-family: "Courier New";
+}
+
+h1, h2, h3, h4, h5, h6{
+font-family: "Courier New";
+text-align: center;
+color: white;
+}
+
+.background-container {
+    position: relative;
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 3200px;
+    background-image: url('/about/static/pictures/back_pic1.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+}
+
+.about-container {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 3000px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 0.5rem;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.about-container * {
+    box-sizing: inherit;
+}
+
+.chart-container {
+    overflow: auto;
+}
+

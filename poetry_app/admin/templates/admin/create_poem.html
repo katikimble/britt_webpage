@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}{{ legend }}{% endblock %}
+{% block content %}
+<div class="create-poem-container">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label(class="form-label") }}
+            {{ form.title(class="form-control", size=32) }}
+        </div>
+        <div class="form-group">
+            {{ form.content.label(class="form-label") }}
+            {{ form.content(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.background.label(class="form-label") }}
+            {{ form.background(class="form-control-file") }}
+        </div>
+        {% if poem and poem.background %}
+        <div class="form-group">
+            <button type="submit" name="delete_background" class="btn btn-danger btn-block">Delete Background Image</button>
+        </div>
+        {% endif %}
+        <div class="form-group button-container">
+            {{ form.submit(class="btn btn-primary btn-block") }}
+            <button type="button" class="btn btn-secondary btn-block" onclick="goBack()">Back</button>
+        </div>
+    </form>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}
+
+
+

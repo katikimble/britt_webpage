@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('subscribe.static', filename='styles/subscribe.css') }}">
+</head>
+<div class="background-container">
+    <div class="container">
+        <div class="trans-box text-center">
+            <h5>Subscribe to receive updates for new poems and art!</h5>
+            <form id="subscribe-form" method="POST" action="{{ url_for('subscribe.handle_subscribe') }}">
+                {{ form.hidden_tag() }}
+                <div class="form-group form-space">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control", id="email", type="email") }}
+                </div>
+                {{ form.submit_subscribe(class="btn-sub") }}
+                {{ form.submit_unsubscribe(class="btn-sub") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

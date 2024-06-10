@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='styles/admin.css') }}">
+<div class="create-poem-container">
+    <h3 class="centered-underline">{{ 'Edit Art' if art else 'Upload New Art' }}</h3>
+    <form method="POST" action="{{ url_for('admin.edit_art', art_id=art.id) if art else url_for('admin.upload_art') }}" enctype="multipart/form-data">
+        <div class="form-group">
+            {{ form.hidden_tag() }}
+            {{ form.title.label(class="form-control-label") }}
+            {{ form.title(class="form-control form-control-lg") }}
+        </div>
+        <div class="form-group">
+            {{ form.art_upload.label(class="form-control-label") }}
+            {{ form.art_upload(class="form-control form-control-lg") }}
+        </div>
+        <div class="form-group button-container">
+            {{ form.submit(class="btn btn-primary") }}
+            <button onclick="goBack()">Back</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endblock %}
+
+

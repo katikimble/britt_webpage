@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('art.static', filename='styles/art.css') }}">
+<div class="container">
+    <div class="row">
+        {% for art in arts %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top fixed-size-img" src="{{ url_for('static', filename='uploads/' ~ art.art_upload) }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ art.title }}</h5>
+                        <a href="{{ url_for('art.art_detail', art_id=art.id) }}" class="view-button">View</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+

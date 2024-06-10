@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="{{ url_for('contact.static', filename='styles/contact.css') }}">
+
+
+    <script>
+        // Function to clear the form
+        function clearForm() {
+            document.getElementById("contact-form").reset();
+            hideMessages();
+        }
+
+        // Function to hide error and success messages
+        function hideMessages() {
+            document.getElementById("error-message").style.display = "none";
+            document.getElementById("success-message").style.display = "none";
+        }
+
+
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            if (name == "" || email == "" || message == "") {
+                document.getElementById("error-message").style.display = "block";
+                return false;
+            } else {
+            // Clear error message if form is valid
+            document.getElementById("error-message").style.display = "none";
+            document.getElementById("success-message").style.display = "block"; // Show success message
+            return true;
+            }
+        }
+    </script>
+</head>
+<div class="background-container">
+<div class="container">
+  <div class="trans-box text-center">
+    <h5>Submit a poetry request, an art idea, or inquire about a purchase! </h5>
+      {% if success_message %}
+      <div id="success-message" class="alert alert-success">
+        {{ success_message }}
+      </div>
+    {% endif %}
+    <form id="contact-form" method="POST" onsubmit="return validateForm()">
+      {{ form.hidden_tag() }}
+      <div class="form-group form-space">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control", id="name") }}
+      </div>
+      <div class="form-group form-space">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control", id="email", type="email") }}
+      </div>
+      <div class="form-group form-space">
+        {{ form.message.label(class="form-label") }}
+        {{ form.message(class="form-control", id="message") }}
+      </div>
+      <br>
+        <p class="error-message" id="error-message">Please fill out all fields before submitting.</p>
+        {{ form.submit(class="btn-sub") }}
+        <button type="reset" class="btn-sub" onclick="clearForm()">Clear</button>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock %}

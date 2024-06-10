@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}Brittani Wrote This</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='content', height=400) }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cormorant+Upright:wght@300;400;500;600;700&family=DotGothic16&family=Nixie+One&family=Oxygen+Mono&family=Syne+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="home-color">
+<div class="top-banner">
+        Brittani Wrote This
+
+    <div class="banner">
+        Poetry & Art by Brittani Collette
+    </div>
+</div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{{ url_for('about.about') }}">Bio</a>
+        <a href="{{ url_for('poems.poems') }}">Poems</a>
+        <a href="{{ url_for('art.art_gallery') }}">Art</a>
+        <a href="{{ url_for('contact.contact') }}">Contact</a>
+        <a href="{{ url_for('subscribe.handle_subscribe') }}">Subscribe</a>
+        <a href="{{ url_for('admin.login') }}">Admin</a>
+    </div>
+
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+      }
+    </script>
+</body>
+</html>
+
+

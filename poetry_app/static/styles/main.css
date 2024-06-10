@@ -1,0 +1,206 @@
+body {
+  margin: 1;
+  padding: 1;
+}
+
+p{
+font-family: "Courier New";
+}
+
+h1, h2, h3, h4, h5, h6{
+font-family: "Courier New";
+}
+
+.home-color{
+    background-color: #000;
+}
+.pages-color{
+    background-color: #E8F8F5;
+}
+
+img.left {
+    float: left;
+    margin: 16px;
+    border:8px
+    outset grey;
+    }
+
+#txtbox {
+    font-size: 12pt;
+    height: 100px;
+    width : 300px;
+}
+
+
+div.fixed {
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  color: gray;
+}
+
+ul {
+    margin-left: 250px;
+}
+
+a.homepage:link{
+    color: white;
+}
+
+
+
+a.britt_link:link{
+  color: black;
+  text-decoration: none;
+  font-family:monospace;
+  font-size:100%
+}
+
+a.britt_link:visited{
+    color: black;
+}
+
+
+
+a.homepage:visited {
+  color: white;
+  text-decoration: none;
+ }
+
+
+
+ul li {
+  margin-bottom: 1.5rem;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+
+
+.admin-panel {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.create-poem-container {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Courier New"
+}
+
+.login-container {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    max-width: 385px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Courier New"
+}
+
+.logout-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+
+.chart-container {
+    overflow: auto;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+
+  }
+
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+  }
+
+  .openbtn:hover {
+    background-color: #444;
+  }
+
+.banner {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        font-size: 25px;
+        font-family: 'Cormorant Upright', serif;
+    }
+
+.top-banner {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        font-size: 70px;
+        font-family: "Nixie One", system-ui;
+        margin-top: 40px;
+    }
+
+

@@ -1,0 +1,84 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.form-label {
+  display: block;
+  text-align: left;
+  font-family: "Courier New"
+
+}
+
+.btn-sub {
+    background-color: #000000;
+    border-color: #000000;
+    color: #fff;
+    margin: 3px;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-decoration: none;
+    font-family: "Courier New"
+}
+
+.btn-sub:hover {
+    background-color: #444;
+}
+
+.form-space {
+   margin-bottom: 10px;
+   font-weight: bold;
+
+ }
+
+ .error-message {
+    color: red;
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+    width: 100%;
+}
+
+.alert {
+    background-color: #28a745;
+    position: relative;
+    margin-top: 20px;
+    max-width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.trans-box {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    max-width: 385px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Courier New"
+    box-sizing: border-box;
+}
+
+.background-container {
+    position: relative;
+    padding: 0.5rem;
+    margin: 1rem auto;
+    max-width: 405px;
+    background-image: url('/about/static/pictures/back_pic1.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+}
