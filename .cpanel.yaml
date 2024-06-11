@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/wbelgkte/public_html/britt_webpage
+    - /bin/cp -R * $DEPLOYPATH
+
