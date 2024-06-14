@@ -43,6 +43,25 @@ def handle_subscribe():
             db.session.add(new_subscriber)
             db.session.commit()
             flash('Subscribed successfully!', 'success')
+            # Send welcome email
+            subject = "Welcome to BrittaniWroteThis!"
+            body = """Hello, 
+            
+Thank you for subscribing to BrittaniWroteThis!
+
+You have successfully subscribed to receive email updates for new content added to my site:
+https://brittaniwrotethis.pythonanywhere.com/
+
+If you wish to unsubscribe at any time, please click the link below:
+https://brittaniwrotethis.pythonanywhere.com/subscribe, enter your email and click unsubscribe.
+
+Thank you for your support!
+
+Best regards,
+Brittani Collette x
+https://brittaniwrotethis.pythonanywhere.com/
+"""
+            send_update_email(subject, body)
 
         elif form.submit_unsubscribe.data:
             # Handle unsubscription

@@ -6,36 +6,38 @@
 
 <div class="poem-button-container">
     <!-- Display buttons for each poem title -->
-    <div id="buttons-container" class="buttons-grid">
-        {% if poems %}
-            {% for poem in poems %}
+    <div id="buttons-container">
+    {% if poems %}
+        {% for poem in poems %}
             <button class="poem-button"
                     onclick="showPoem({{ loop.index }})"
-                    style="background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else 'none' }}');">
+                    style="background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else '' }}');
+                           {% if not poem.background %}background-color: rgba(110, 0, 160, 0.2);{% endif %}">
                 <span class="poem-button-text">{{ poem.title }}</span>
             </button>
-            {% endfor %}
-            <button class="poem-button" onclick="showAllPoems()">
-                <span class="poem-button-text">Display All</span>
-            </button>
-        {% else %}
-            <p>No poems available at this time.</p>
-        {% endif %}
-    </div>
+        {% endfor %}
+        <button class="poem-button" onclick="showAllPoems()" style="background-color: rgba(110, 0, 160, 0.2);">
+            <span class="poem-button-text">Display All</span>
+        </button>
+    {% else %}
+        <p>No poems available at this time.</p>
+    {% endif %}
+</div>
+
 </div>
 
 <!-- Display each poem -->
-<div id="poems-container">
-    {% for poem in poems %}
-    <div class="poem-container" id="poem-{{ loop.index }}" style="display: none; background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else 'none' }}'); background-size: cover; {% if not poem.background %} background-color: rgba(255, 255, 255, 0.1); {% endif %}">
-        <div class="poem-content">
-            <h2 class="poem-title">{{ poem.title }}</h2>
-            <p>{{ poem.content|safe }}</p>
-        </div>
+
+{% for poem in poems %}
+<div class="poem-container" id="poem-{{ loop.index }}" style="display: none; background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else 'none' }}'); background-size: cover; {% if not poem.background %} background-color: rgba(255, 255, 255, 0.1); {% endif %}">
+    <div class="poem-content">
+        <h2 class="poem-title">{{ poem.title }}</h2>
+        <p>{{ poem.content|safe }}</p>
     </div>
-    {% endfor %}
-    <button id="back-button" class="back-button" onclick="goBack()">Back</button>
 </div>
+{% endfor %}
+<button id="back-button" class="back-button" onclick="goBack()">Back</button>
+
 
 <script>
     function showPoem(index) {

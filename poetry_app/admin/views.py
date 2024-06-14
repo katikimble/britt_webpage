@@ -149,7 +149,22 @@ def new_poem():
         db.session.add(poem)
         db.session.commit()
         # Notify subscribers
-        send_update_email('New Poem Added', 'I just added a new Poem! Come check it out!')
+        subject = "New Poem Added"
+        body = """Hello, 
+
+I just added a new Poem to my collection.  Come check it out!
+https://brittaniwrotethis.pythonanywhere.com/poems
+
+If you wish to unsubscribe at any time, please click the link below:
+https://brittaniwrotethis.pythonanywhere.com/subscribe, enter your email and click unsubscribe.
+
+Thank you for your support!
+
+Best regards,
+Brittani Collette x
+        """
+
+        send_update_email(subject, body)
         flash('Your poem has been created and your subscribers were notified!', 'success')
         return redirect(url_for('admin.dashboard'))
     return render_template('create_poem.html', title='New Poem', form=form, legend='New Poem', poem=None)
@@ -239,7 +254,21 @@ def upload_art():
             db.session.add(new_art)
             db.session.commit()
             # Notify subscribers
-            send_update_email('New Art Added', 'I just added some new art! Come check it out!')
+            subject = "New Art Added"
+            body = """Hello, 
+
+I just added new art to my collection.  Come check it out!
+https://brittaniwrotethis.pythonanywhere.com/art_gallery
+
+If you wish to unsubscribe at any time, please click the link below:
+https://brittaniwrotethis.pythonanywhere.com/subscribe, enter your email and click unsubscribe.
+
+Thank you for your support!
+
+Best regards,
+Brittani Collette x
+                    """
+            send_update_email(subject, body)
             flash('Your art has been uploaded and your subscribers were notified!', 'success')
             return redirect(url_for('admin.dashboard'))
     return render_template('upload_art.html', title='Upload Art', form=form)

@@ -23,21 +23,21 @@ color: white;
 
 .background-container {
     position: relative;
-    padding: 2rem;
+    padding: 1rem;
     margin: 1rem auto;
     max-width: 3200px;
     background-image: url('/about/static/pictures/back_pic1.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 0.5rem;
+
 }
 
 .about-container {
     position: relative;
-    z-index: 1;
-    padding: 2rem;
+    padding: 1rem;
     margin: 0 auto;
-    max-width: 3000px;
+    max-width: 3190px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 0.5rem;
     white-space: normal;
@@ -47,11 +47,6 @@ color: white;
     box-sizing: border-box;
 }
 
-.about-container * {
-    box-sizing: inherit;
-}
-
 .chart-container {
     overflow: auto;
 }
-

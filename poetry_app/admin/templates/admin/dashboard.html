@@ -50,16 +50,19 @@
         </div>
         <br>
         {% for poem in poems %}
-            <div style="background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else '' }}'); padding: 20px; border: 1px solid #ccc; word-wrap: break-word; word-break: break-word; white-space: normal;">
-                <h2>{{ poem.title }}</h2>
+            <div class="poem-container" style="background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else 'none' }}'); background-size: cover; {% if not poem.background %} background-color: rgba(255, 255, 255, 0.1); {% endif %}">
+        <div class="poem-content">
+                <h2 class="poem-title">{{ poem.title }}</h2>
                 <p>{{ poem.content|safe }}</p>
             </div>
+                </div>
             <div class="button-container">
                 <a href="{{ url_for('admin.update_poem', poem_id=poem.id) }}" class="btn btn-primary">Edit</a>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-poem-id="{{ poem.id }}">Delete</button>
             </div><br>
         {% endfor %}
-    </div>
+
+</div>
 </div>
 
 <br>

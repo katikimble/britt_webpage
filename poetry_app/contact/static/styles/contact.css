@@ -1,15 +1,7 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-
 .form-label {
-  display: block;
-  text-align: left;
-  font-family: "Courier New"
-
+    display: block;
+    text-align: left;
+    font-family: "Courier New";
 }
 
 .btn-sub {
@@ -20,7 +12,7 @@ body, html {
     border-radius: 5px;
     padding: 3px 10px;
     text-decoration: none;
-    font-family: "Courier New"
+    font-family: "Courier New";
 }
 
 .btn-sub:hover {
@@ -28,12 +20,11 @@ body, html {
 }
 
 .form-space {
-   margin-bottom: 10px;
-   font-weight: bold;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
- }
-
- .error-message {
+.error-message {
     color: red;
     display: none;
     background-color: #fff;
@@ -62,23 +53,67 @@ textarea {
 }
 
 .trans-box {
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 0.5rem;
     margin: 1rem auto;
     max-width: 385px;
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: "Courier New"
+    font-family: "Courier New";
     box-sizing: border-box;
 }
 
 .background-container {
     position: relative;
-    padding: 0.5rem;
+    padding: 1rem;
     margin: 1rem auto;
     max-width: 405px;
     background-image: url('/about/static/pictures/back_pic1.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 0.5rem;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-space {
+    margin-bottom: 15px;
+    font-family: "Courier New";
+}
+
+.form-label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    font-family: "Courier New";
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .trans-box {
+        padding: 1rem;
+        margin: 0.5rem auto;
+        max-width: 100%;
+    }
+
+    .form-space {
+        margin-bottom: 8px;
+    }
+
+    .btn-sub {
+        margin: 2px;
+        padding: 2px 8px;
+    }
+
+    .alert {
+        margin-top: 10px;
+        max-width: 100%;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
 }

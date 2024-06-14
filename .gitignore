@@ -1,2 +1,25 @@
+# Environment variable files
 .env
+
+# Database files
+instance/
+*.sqlite3
+*.db
+
+# Ignore Python cache and other unnecessary files
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# Ignore virtual environment directory
 venv/
+env/
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
