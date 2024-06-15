@@ -33,6 +33,26 @@ color: white;
 
 }
 
+.poem-container {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    background-size: cover;
+    background-position: center;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.poem-content {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    color: #080609;
+}
+
 .about-container {
     position: relative;
     padding: 1rem;

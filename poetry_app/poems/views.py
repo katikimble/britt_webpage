@@ -18,5 +18,5 @@ poems_bp = Blueprint('poems', __name__, static_url_path='/poems/static', templat
 # Route for Poems page
 @poems_bp.route('/poems')
 def poems():
-    poetry = Poem.query.all()
+    poetry = Poem.query.order_by(Poem.date_posted.desc()).all()
     return render_template('poems.html', poems=poetry)

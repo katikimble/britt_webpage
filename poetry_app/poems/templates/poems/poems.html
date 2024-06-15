@@ -4,9 +4,8 @@
 
 <link rel="stylesheet" href="{{ url_for('poems.static', filename='styles/poems.css') }}">
 
-<div class="poem-button-container">
+<div class="poem-button-container" id="buttons-container">
     <!-- Display buttons for each poem title -->
-    <div id="buttons-container">
     {% if poems %}
         {% for poem in poems %}
             <button class="poem-button"
@@ -24,12 +23,9 @@
     {% endif %}
 </div>
 
-</div>
-
 <!-- Display each poem -->
-
 {% for poem in poems %}
-<div class="poem-container" id="poem-{{ loop.index }}" style="display: none; background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else 'none' }}'); background-size: cover; {% if not poem.background %} background-color: rgba(255, 255, 255, 0.1); {% endif %}">
+<div class="poem-container" id="poem-{{ loop.index }}" style="display: none; background-image: url('{{ url_for('static', filename='uploads/' ~ poem.background) if poem.background else 'none' }}'); background-size: cover; {% if not poem.background %} background-color: rgba(110, 0, 160, 0.2); {% endif %}">
     <div class="poem-content">
         <h2 class="poem-title">{{ poem.title }}</h2>
         <p>{{ poem.content|safe }}</p>
@@ -37,7 +33,6 @@
 </div>
 {% endfor %}
 <button id="back-button" class="back-button" onclick="goBack()">Back</button>
-
 
 <script>
     function showPoem(index) {
@@ -73,12 +68,14 @@
         poems.forEach(poem => poem.style.display = 'none');
 
         // Show buttons container
-        document.getElementById('buttons-container').style.display = 'grid';
+        const buttonsContainer = document.getElementById('buttons-container');
+        buttonsContainer.style.display = 'grid';
 
         // Hide the back button
         document.getElementById('back-button').style.display = 'none';
     }
 </script>
 {% endblock %}
+
 
 

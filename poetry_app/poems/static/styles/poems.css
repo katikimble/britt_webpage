@@ -5,22 +5,18 @@
     max-width: 800px;
     text-align: center;
     font-family: "Courier New";
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-x: hidden; /* Hide horizontal overflow */
-    overflow-y: auto; /* Enable vertical scrolling */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 .poem-button {
-    flex: 0 1 calc(50% - 10px);
-    width: 250px;
+    width: 100%;
     padding: 20px;
-    margin: 10px;
     background-size: cover;
     background-position: center;
     color: white;
-    font-size: 1.3em;
+    font-size: 1em;
     border: none;
     cursor: pointer;
     border-radius: 15px;
@@ -94,15 +90,16 @@
 
 /* Media Query for mobile devices */
 @media (max-width: 768px) {
-    .poem-button {
-        flex: 0 1 100%; /* Full width for mobile view */
-        max-width: none;
-        margin-bottom: 10px;
-    }
-
     .poem-button-container {
+        grid-template-columns: 1fr; /* Full width for mobile view */
         padding: 1rem; /* Adjust padding for mobile */
     }
+
+    .poem-button {
+        margin-bottom: 10px;
+        font-size: .9em;
+    }
+
     .poem-container {
         padding: 1rem; /* Reduce padding for mobile */
     }
@@ -112,3 +109,4 @@
         font-size: 1rem; /* Adjust font size for better readability */
     }
 }
+

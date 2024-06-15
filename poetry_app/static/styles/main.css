@@ -190,7 +190,7 @@ ul li {
         background-color: #000;
         color: #fff;
         text-align: center;
-        font-size: 35px;
+        font-size: 20px;
         font-family: 'Cormorant Upright', serif;
     }
 
@@ -198,7 +198,7 @@ ul li {
         background-color: #000;
         color: #fff;
         text-align: center;
-        font-size: 70px;
+        font-size: 55px;
         font-family: "Nixie One", system-ui;
         margin-top: 55px;
     }
@@ -206,10 +206,10 @@ ul li {
 /* Media Query for tablets and below */
 @media (max-width: 768px) {
     .top-banner {
-        font-size: 50px;
+        font-size: 40px;
     }
     .banner {
-        font-size: 30px;
+        font-size: 20px;
     }
 
 }
