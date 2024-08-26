@@ -15,7 +15,6 @@ from poetry_app import db
 from poetry_app.models import Subscriber
 from poetry_app.subscribe.forms import SubscribeForm
 
-
 # Create the subscribe blueprint
 subscribe_bp = Blueprint('subscribe', __name__, static_url_path='/subscribe/static',
                          template_folder='templates/subscribe', static_folder='static')
@@ -61,7 +60,7 @@ Best regards,
 Brittani Collette x
 https://brittaniwrotethis.pythonanywhere.com/
 """
-            send_update_email(subject, body)
+            send_subscriber_email(subject, body, email)
 
         elif form.submit_unsubscribe.data:
             # Handle unsubscription
@@ -112,3 +111,34 @@ def send_update_email(subject, body):
             print('Email sent to', receiver_email)
         except Exception as e:
             print('Failed to send email to', receiver_email, 'Error:', str(e))
+
+
+# Function to send single email to new subscribers
+def send_subscriber_email(subject, body, receiver_email):
+    with current_app.app_context():
+        sender_email = current_app.config['MAIL_USERNAME']
+        sender_password = current_app.config['MAIL_PASSWORD']
+        mail_server = current_app.config['MAIL_SERVER']
+        mail_port = current_app.config['MAIL_PORT']
+        mail_use_tls = current_app.config['MAIL_USE_TLS']
+
+    # Create email message
+    message = MIMEMultipart()
+    message['From'] = sender_email
+    message['To'] = receiver_email
+    message['Subject'] = subject
+
+    message.attach(MIMEText(body, 'plain'))
+
+    try:
+        # Send email
+        server = smtplib.SMTP(mail_server, mail_port)
+        if mail_use_tls:
+            server.starttls()
+        server.login(sender_email, sender_password)
+        text = message.as_string()
+        server.sendmail(sender_email, receiver_email, text)
+        server.quit()
+        print('Email sent to', receiver_email)
+    except Exception as e:
+        print('Failed to send email to', receiver_email, 'Error:', str(e))
